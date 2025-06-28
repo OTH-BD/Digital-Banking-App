@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-4 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card-header bg-primary text-white rounded-top-4">
+      <h5 class="mb-0">🧍‍♂️ Create New Customer</h5>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="newCustomerFormGroup" (ngSubmit)="handeSaveCustomer()">
+        
+        <div class="mb-4">
+          <label for="name" class="form-label fw-semibold">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control shadow-sm"
+            formControlName="name"
+            placeholder="Enter customer name"
+          />
+          <div class="form-text text-danger" *ngIf="newCustomerFormGroup.controls['name'].touched && newCustomerFormGroup.controls['name'].errors?.['required']">
+            Name is required
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control shadow-sm"
+            formControlName="email"
+            placeholder="Enter customer email"
+          />
+          <div class="form-text text-danger" *ngIf="newCustomerFormGroup.controls['email'].touched && newCustomerFormGroup.controls['email'].errors?.['required']">
+            Email is required
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button
+            [disabled]="!newCustomerFormGroup.valid"
+            class="btn btn-primary btn-lg shadow-sm"
+          >
+            <i class="bi bi-plus-circle me-2"></i>Create Customer
+          </button>
+        </div>
+        
+      </form>
+    </div>
+    
+  </div>
+</div>

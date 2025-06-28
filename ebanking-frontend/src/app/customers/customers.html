@@ -1,48 +1,75 @@
 <div class="container mt-5">
 
-    <ng-container *ngIf="customers | async as customerList; else failureOrLoading"> 
-    <!-- <div *ngIf="customerList.length === 0">No customers found.</div> -->
-    <div class="card">
+  <ng-container *ngIf="customers | async as customerList; else failureOrLoading">
 
-        <div class="card-header">
-            <h5 class="card-title">Customers</h5>
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-header bg-primary text-white rounded-top-4">
+        <h5 class="card-title mb-0">📋 Customers</h5>
+      </div>
+
+      <div class="card-body">
+        <div *ngIf="searchFormGroup">
+          <form [formGroup]="searchFormGroup" (ngSubmit)="handelSearchCustomers()">
+            <div class="input-group mb-4">
+              <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+              <input
+                type="text"
+                class="form-control shadow-sm"
+                formControlName="keyword"
+                placeholder="Search customers by name or email"
+              />
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+          </form>
         </div>
-    
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let c of customers | async">
-                        <td>{{ c.id }}</td>
-                        <td>{{ c.name }}</td>
-                        <td>{{ c.email }}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of customerList">
+                <td>{{ c.id }}</td>
+                <td>{{ c.name }}</td>
+                <td>{{ c.email }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-outline-danger rounded-pill"
+                    (click)="handleDeleteCustomer(c)"
+                    title="Delete"
+                  >
+                    <i class="bi bi-trash"></i> Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
 
+  </ng-container>
+
+  <ng-template #failureOrLoading>
+    <ng-container *ngIf="errorMessage; else loading">
+      <div class="alert alert-danger mt-4" role="alert">
+        {{ errorMessage }}
+      </div>
     </ng-container>
-
-    <ng-template #failureOrLoading>
-        <ng-container *ngIf="errorMessage; else loading">
-
-            <div class="alert alert-danger" role="alert">
-                {{ errorMessage }}
-            </div>
-
-        </ng-container>
-        <ng-template #loading>
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </ng-template>
+    <ng-template #loading>
+      <div class="text-center mt-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2 text-muted">Loading customers...</p>
+      </div>
     </ng-template>
+  </ng-template>
 
 </div>

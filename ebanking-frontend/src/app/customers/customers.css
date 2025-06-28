@@ -1,0 +1,9 @@
+.card-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
