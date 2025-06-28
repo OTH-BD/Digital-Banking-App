@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.bd.ebankingbackend.dtos.AccountOperationDTO;
 import net.bd.ebankingbackend.dtos.CustomerDTO;
-import net.bd.ebankingbackend.entities.Customer;
+
 import net.bd.ebankingbackend.exceptions.CustomerNotFoundException;
 import net.bd.ebankingbackend.service.BankAccountService;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +15,8 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @Slf4j // pour afficher les messages de logs
+
+@CrossOrigin("*") // pour autoriser au frontend de lire les donnes pour ne pas blocker
 public class CustomerRestController {
 
 
@@ -22,6 +24,13 @@ public class CustomerRestController {
     @GetMapping("/customers")
     public List<CustomerDTO> customers() {
         return bankAccountService.listCustomers();
+    }
+
+    ///  search customer API
+    @GetMapping("/customers/search")
+    public List<CustomerDTO> searchCustomers(@RequestParam(name = "keyword",defaultValue = "")String keyword) {
+
+        return bankAccountService.searchCustomer("%"+keyword+"%");
     }
     //  API pour consulter un Customer par ID
     @GetMapping("/customers/{id}")
