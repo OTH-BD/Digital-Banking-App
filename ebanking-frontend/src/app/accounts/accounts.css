@@ -1,0 +1,89 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 1rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Header Gradient */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #007bff, #6610f2);
+}
+
+/* Form input style */
+.form-control {
+  transition: box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  border-color: #007bff;
+}
+
+/* Search Button */
+.btn-primary {
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+
+/* Table style */
+.table {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Pagination Pills */
+.nav-pills .btn {
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.nav-pills .btn:hover {
+  background-color: #0d6efd;
+  color: white;
+ 
+}
+
+.nav-pills .btn.active {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .glass-card {
+    padding: 1rem !important;
+  }
+
+  .table thead {
+    font-size: 14px;
+  }
+}
+
+.fade-in-custom {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

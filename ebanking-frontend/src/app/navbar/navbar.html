@@ -1,43 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark shadow custom-navbar sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-white" href="#">💳 E-Banking</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <i class="bi bi-credit-card-fill me-2 fs-4 text-warning"></i>
+      <span class="fw-bold text-white">E-Banking</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
       aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="bi bi-list text-white fs-3"></i>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/customers">Customers</a>
+          <a class="nav-link d-flex align-items-center" routerLink="/customers">
+            <i class="bi bi-people-fill me-2"></i> Customers
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/accounts">Accounts</a>
+          <a class="nav-link d-flex align-items-center" routerLink="/accounts">
+            <i class="bi bi-wallet2 me-2"></i> Accounts
+          </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Manage
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-gear-fill me-2"></i> Manage
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/customers">Search Customers</a></li>
-            <li><a class="dropdown-item" routerLink="/new-customer">New Customer</a></li>
+          <ul class="dropdown-menu animate__animated animate__fadeIn">
+            <li><a class="dropdown-item" routerLink="/customers"><i class="bi bi-search me-2"></i>Search Customers</a></li>
+            <li><a class="dropdown-item" routerLink="/new-customer"><i class="bi bi-person-plus-fill me-2"></i>New Customer</a></li>
           </ul>
         </li>
       </ul>
-         <!-- 👤 USER PROFILE DROPDOWN -->
+
+      <!-- 👤 USER DROPDOWN -->
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex align-items-center text-white" href="#" id="userDropdown"
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle me-1 fs-5"></i>
-            <span></span>
+            <i class="bi bi-person-circle me-1 fs-5 text-white"></i>
+            <span class="text-white">User</span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" routerLink="/profile"><i class="bi bi-person me-2"></i>Profile</a></li>
+          <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeInRight" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" routerLink="/profile"><i class="bi bi-person me-2"></i> Profile</a></li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item text-danger"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            <li><a class="dropdown-item text-danger"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
           </ul>
         </li>
       </ul>

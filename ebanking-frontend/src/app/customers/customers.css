@@ -1,9 +1,37 @@
-.card-header {
-  font-size: 1.2rem;
-  font-weight: 600;
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+
+.bg-gradient-primary {
+  background: linear-gradient(to right, #0d6efd, #3b8beb);
 }
 
-.btn-outline-primary:hover {
-  background-color: #0d6efd;
-  color: #fff;
+.card-header {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.table tbody tr:hover {
+  background-color: #f3f9ff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+}
+
+.table-row {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
