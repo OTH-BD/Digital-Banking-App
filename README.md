@@ -4,13 +4,20 @@ Cette application permet de gérer des **comptes bancaires** pour des clients, a
 
 ---
 
-## 🧱 Technologies utilisées
 
-- **Backend** : Java 17, Spring Boot 3, Spring Data JPA, H2/MySQL, Swagger, Spring Security, JWT
-- **Frontend** : Angular
-- **Authentification** : Spring Security + JSON Web Token (JWT)
+## 🧰 Technologies utilisées
+
+| Couche         | Technologies principales                      |
+|----------------|-----------------------------------------------|
+| Backend        | Spring Boot 3, Spring Data JPA, Lombok ...    |
+| Base de données| MySQL (via WAMP Server)                       |
+| Frontend       | Angular , Bootstrap , CSS                     |
+| Sécurité       | Spring Security, JSON Web Token (JWT)         |
+| Documentation  | Swagger (springdoc-openapi)  v3               |
+| Autres outils  | Maven, Postman, Git, IntelliJ / VSCode        |
 
 ---
+
 
 ## 📂 Structure du projet
 
