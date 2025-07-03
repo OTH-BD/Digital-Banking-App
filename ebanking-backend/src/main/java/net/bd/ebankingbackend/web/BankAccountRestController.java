@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 public class BankAccountRestController {
-    private BankAccountService bankAccountService;
+    private  BankAccountService bankAccountService;
 
     public BankAccountRestController(BankAccountService bankAccountService) {
         this.bankAccountService = bankAccountService;
