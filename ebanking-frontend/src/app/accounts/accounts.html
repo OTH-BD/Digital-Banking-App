@@ -1,60 +1,129 @@
 <div class="fade-in-custom container py-5">
-  <div class="card glass-card shadow-lg border-0 rounded-4 col-md-10 col-lg-7 mx-auto animate__animated animate__fadeIn">
-    <div class="card-header bg-gradient-primary text-white rounded-top-4 py-3 px-4">
-      <h5 class="mb-0"><i class="bi bi-search me-2"></i>Search Account</h5>
-    </div>
+  <div class="row gy-4 justify-content-center">
 
-    <div class="card-body p-4 ">
-      <form [formGroup]="accountFormGroup" (ngSubmit)="handleSearchAccount()">
-        <div class="mb-4">
-          <label for="accountId" class="form-label fw-semibold">🔐 Account ID</label>
-          <input type="text" id="accountId" formControlName="accountId"
-            class="form-control shadow-sm border-0 rounded-3" placeholder="Enter account ID">
+    <!-- Search Account -->
+    <div class="col-md-6">
+      <div class="card glass-card shadow-lg border-0 rounded-4 animate__animated animate__fadeIn">
+        <div class="card-header bg-gradient-primary text-white rounded-top-4 py-3 px-4">
+          <h5 class="mb-0"><i class="bi bi-search me-2"></i>Search Account</h5>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg w-100 shadow">
-          <i class="bi bi-search me-2"></i>Search
-        </button>
-      </form>
 
-      <div class="mt-5 animate__animated animate__fadeInUp animate__delay-1s">
-        <ng-container *ngIf="accountObservable | async as accountDetails">
-          <div *ngIf="accountDetails">
-            <h5 class="fw-bold text-primary mb-3">📋 Account Details</h5>
-            <ul class="list-group mb-4">
-              <li class="list-group-item border-0 ps-0"><strong>Account ID:</strong> {{ accountDetails.accountId }}</li>
-              <li class="list-group-item border-0 ps-0"><strong>Balance:</strong> {{ accountDetails.balance | currency }}</li>
-            </ul>
-
-            <div class="table-responsive">
-              <table class="table table-hover align-middle">
-                <thead class="table-primary text-center">
-                  <tr>
-                    <th scope="col">Transaction ID</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let op of accountDetails.accountOperationDTOS" class="text-center">
-                    <td>{{ op.id }}</td>
-                    <td>{{ op.operationDate | date:'short' }}</td>
-                    <td>{{ op.type }}</td>
-                    <td>{{ op.amount | currency }}</td>
-                    <td>{{ op.description }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <ul class="nav nav-pills">
-                <li *ngFor="let item of [].constructor(accountDetails.totalPages);let page = index ">
-                    <a [ngClass]="page==currentPage?'active':'' " (click)="goToPage(page)" class="btn btn-outline-info ms-1 mt-1">{{ page }}</a>
-                </li>
-              </ul>
+        <div class="card-body p-4" >
+          <form [formGroup]="accountFormGroup" (ngSubmit)="handleSearchAccount()" method="get">
+            <div class="mb-4">
+              <label for="accountId" class="form-label fw-semibold"><i class="bi bi-person-badge me-1"></i>Account ID</label>
+              <input type="text" id="accountId" formControlName="accountId"
+                class="form-control shadow-sm border-0 rounded-3" placeholder="Enter account ID">
             </div>
+            <button class="btn btn-primary btn-lg w-100 shadow">
+              <i class="bi bi-search me-2"></i>Search
+            </button>
+          </form>
+
+          <div class="mt-5 animate__animated animate__fadeInUp animate__delay-1s">
+            <ng-template #errorTemplate>
+                    <ng-container *ngIf="errorMessage"; else loading>
+                                        
+                      <div class="alert alert-danger mt-4" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ errorMessage }}
+                      </div> 
+                    </ng-container>
+                    
+            </ng-template>
+            <ng-container *ngIf="accountObservable | async as accountDetails">
+              <div *ngIf="accountDetails">
+                <h5 class="fw-bold text-primary mb-3">📋 Account Details</h5>
+                <ul class="list-group mb-4">
+                  <li class="list-group-item border-0 ps-0">
+                    <i class="bi bi-card-text me-1"></i>
+                    <strong>ID:</strong> {{ accountDetails.accountId }}
+                  </li>
+                  <li class="list-group-item border-0 ps-0">
+                    <i class="bi bi-cash-stack me-1"></i>
+                    <strong>Balance:</strong> {{ accountDetails.balance | currency }}
+                  </li>
+                </ul>
+
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle">
+                    <thead class="table-primary text-center">
+                      <tr>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let op of accountDetails.accountOperationDTOS" class="text-center">
+                        <td>{{ op.id }}</td>
+                        <td>{{ op.operationDate | date:'short' }}</td>
+                        <td>{{ op.type }}</td>
+                        <td>{{ op.amount | currency }}</td>
+                        <td>{{ op.description }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <ul class="nav nav-pills justify-content-center">
+                    <li *ngFor="let item of [].constructor(accountDetails.totalPages); let page = index">
+                      <a (click)="goToPage(page)" 
+                         [ngClass]="page == currentPage ? 'active' : ''"
+                         class="btn btn-outline-info ms-1 mt-1">
+                         {{ page }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </ng-container>
           </div>
-        </ng-container>
+        </div>
       </div>
     </div>
+
+    <!-- Operations -->
+    <div class="col-md-6" *ngIf="accountObservable">
+      <div class="card glass-card shadow-lg border-0 rounded-4 animate__animated animate__fadeInRight">
+        <div class="card-header bg-gradient-primary text-white rounded-top-4 py-3 px-4">
+          <h5 class="mb-0"><i class="bi bi-gear-fill me-2"></i>Operations</h5>
+        </div>
+
+        <div class="card-body p-4">
+           
+          <form [formGroup]="operationFormGroup" (ngSubmit)="handleAccountOperation()" method="post" >
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-arrow-left-right me-1"></i>Operation Type</label>
+              <select formControlName="operationType" class="form-select">
+                <option value="DEBIT">DEBIT</option>
+                <option value="CREDIT">CREDIT</option>
+                <option value="TRANSFER">TRANSFER</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-coin me-1"></i>Amount</label>
+              <input type="text" formControlName="amount" class="form-control" placeholder="Enter amount">
+            </div>
+
+            <div class="mb-3" *ngIf="operationFormGroup.value.operationType === 'TRANSFER'">
+              <label class="form-label"><i class="bi bi-arrow-up-right-square me-1"></i>Destination</label>
+              <input type="text" formControlName="accountDestination" class="form-control" placeholder="Enter destination">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label"><i class="bi bi-chat-dots me-1"></i>Description</label>
+              <input type="text" formControlName="description" class="form-control" placeholder="Enter description">
+            </div>
+
+            <button class="btn btn-primary w-100 shadow">
+              <i class="bi bi-save me-2"></i>Save Operation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

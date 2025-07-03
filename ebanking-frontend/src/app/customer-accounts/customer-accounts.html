@@ -1,0 +1,19 @@
+<div class="container py-5">
+  <div class="card shadow-lg glass-card border-0 rounded-4 col-md-10 col-lg-7 mx-auto">
+
+    <!-- Header stylisé -->
+    <div class="card-header bg-gradient-primary text-white rounded-top-4 d-flex align-items-center">
+      <i class="bi bi-code-slash fs-4 me-2"></i>
+      <h5 class="mb-0">Raw Customer JSON</h5>
+    </div>
+    <div class="p-3">customerId: {{ customerId }}</div>
+
+    <!-- Corps -->
+    <div class="card-body">
+      <div class="json-box p-4 rounded">
+        <pre class="small m-0 text-dark">{{ customer | json }}</pre>
+      </div>
+    </div>
+    
+  </div>
+</div>

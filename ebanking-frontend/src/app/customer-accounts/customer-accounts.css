@@ -1,0 +1,29 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+}
+
+/* JSON box stylée */
+.json-box {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #212529;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-radius: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}

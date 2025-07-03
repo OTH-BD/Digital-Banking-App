@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Customer } from './../services/customer';
 import { CommonModule } from '@angular/common';
 
@@ -13,13 +14,14 @@ import { Form, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/form
   styleUrl: './customers.css'
 })
 export class Customers implements OnInit {
+
   //customers : any;
   customers! : Observable<Array<CustomerModel>>;
   errorMessage!: string;
 
   searchFormGroup!: FormGroup;
-  constructor(private customerService: Customer, private fb: FormBuilder) { }
- 
+  constructor(private customerService: Customer, private fb: FormBuilder , private router: Router) { }
+
   ngOnInit() {
     this.searchFormGroup = this.fb.group({
       keyword: this.fb.control('')
@@ -74,5 +76,10 @@ export class Customers implements OnInit {
 
     }
       );
+  }
+
+
+  handleCustomerAccounts(customer: CustomerModel) {
+    this.router.navigateByUrl(`/customer-accounts/${customer.id}`, { state: customer });
   }
 }

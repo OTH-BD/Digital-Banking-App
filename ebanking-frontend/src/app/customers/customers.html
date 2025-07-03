@@ -27,6 +27,7 @@
                 <th><i class="bi bi-person"></i> Name</th>
                 <th><i class="bi bi-envelope"></i> Email</th>
                 <th class="text-center"><i class="bi bi-tools"></i> Actions</th>
+                <th class="text-center"><i class="bi bi-person-badge"></i> Accounts</th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +38,12 @@
                 <td class="text-center">
                   <button class="btn btn-sm btn-danger shadow-sm" (click)="handleDeleteCustomer(c)">
                     <i class="bi bi-trash3-fill me-1"></i> Delete
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button class="btn btn-sm btn-success shadow-sm" (click)="handleCustomerAccounts(c)">
+                    <i class="bi bi-wallet-fill me-1"></i> Accounts
                   </button>
                 </td>
               </tr>
