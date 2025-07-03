@@ -44,6 +44,7 @@ ebanking/
 │       ├── exceptions/
 │       ├── mappers/
 │       ├── repositories/
+│       ├── security/
 │       ├── services/
 │       └── web/
 
