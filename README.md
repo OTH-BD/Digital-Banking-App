@@ -1,9 +1,21 @@
-# 💳 Bank Account Management Application
+# 🏦 Application de Gestion des Comptes Bancaires
 
-Cette application permet de gérer des **comptes bancaires** pour des clients, avec la possibilité d'effectuer des **opérations de débit et de crédit**. Elle supporte deux types de comptes : **courants** et **épargnes**, et est divisée en trois parties : Backend (Spring Boot), Frontend (Angular), et Sécurité (Spring Security + JWT).
+Une application web complète pour la gestion de comptes bancaires, développée avec **Spring Boot** pour le backend et **Angular** pour le frontend.  
+L'application prend en charge l'authentification sécurisée à l'aide de **Spring Security** et **JSON Web Token (JWT)**.
 
 ---
 
+## 🎯 Objectif du Projet
+
+Ce projet permet de :
+
+- Gérer les **clients** et leurs **comptes bancaires**
+- Réaliser des opérations de **crédit**, **débit**, et **virement**
+- Consulter l’historique des opérations
+- Supporter deux types de comptes : **courants** et **épargnes**
+- Sécuriser l'accès aux services avec **authentification JWT**
+  
+---
 
 ## 🧰 Technologies utilisées
 
