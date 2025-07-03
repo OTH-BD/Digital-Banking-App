@@ -203,7 +203,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 
     @Override
     public List<AccountOperationDTO> accountHistory(String accountId){
-        List<AccountOperation> accountOperations=accountOperationRepository.findByBankAccountId(accountId);
+        List<AccountOperation> accountOperations=accountOperationRepository.findByBankAccountIdOrderByOperationDateDesc(accountId);
         return accountOperations.stream().map(op->dtoMapper.fromAccountOperation(op)).collect(Collectors.toList());
     }
 
@@ -211,7 +211,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     public AccountHistoryDTO getAccountHistory(String accountId, int page, int size) throws BanAccountNotFoundException {
         BankAccount bankAccount = bankAccountRepository.findById(accountId).orElse(null);
         if(bankAccount == null) throw new BanAccountNotFoundException("Account Not Found !");
-        Page<AccountOperation> accountOperations=accountOperationRepository.findByBankAccountId(accountId ,PageRequest.of(page,size));
+        Page<AccountOperation> accountOperations=accountOperationRepository.findByBankAccountIdOrderByOperationDateDesc(accountId ,PageRequest.of(page,size));
         AccountHistoryDTO accountHistoryDTO = new AccountHistoryDTO();
         List<AccountOperationDTO> accountOperationDTOS = accountOperations.stream().map(op->dtoMapper.fromAccountOperation(op)).collect(Collectors.toList());
         accountHistoryDTO.setAccountOperationDTOS(accountOperationDTOS);
@@ -230,5 +230,6 @@ public class BankAccountServiceImpl implements BankAccountService {
         List<CustomerDTO> customerDTOS =customers.stream().map(customer -> dtoMapper.fromCustomer(customer)).collect(Collectors.toList());
         return customerDTOS;
     }
+
 
 }
