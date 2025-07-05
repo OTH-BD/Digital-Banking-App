@@ -56,3 +56,14 @@ ebanking/
 │
 └── README.md
 ```
+![Login Screenshot](./screenshots/v1.png)
+
+> 📸 *L'utilisateur peut se connecter avec un rôle `USER` ou `ADMIN`.*
+
+---
+
+## 🧭 Navigation
+
+- `/login` : Page de connexion
+- `/admin/customers` : Liste des clients
+- `/admin/accounts` : Liste des comptes
