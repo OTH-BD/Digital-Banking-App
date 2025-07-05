@@ -1,0 +1,36 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center vh-100">
+  <div class="card login-card glass-card p-4 shadow-lg animate__animated animate__fadeIn col-md-5 col-sm-10 border-0 rounded-4">
+    <div class="text-center mb-4">
+      <i class="bi bi-shield-lock-fill text-primary fs-1"></i>
+      <h3 class="fw-bold text-white">Secure Login</h3>
+      <p class="text-light small">Welcome 👋 Please sign in to continue</p>
+    </div>
+
+    <form [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
+      <div class="mb-3">
+        <label for="username" class="form-label text-light">Username</label>
+        <div class="input-group">
+          <span class="input-group-text bg-transparent text-light"><i class="bi bi-person-fill"></i></span>
+          <input type="text" id="username" formControlName="username"
+                 class="form-control bg-transparent text-white border-light"
+                 placeholder="Enter your username">
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label text-light">Password</label>
+        <div class="input-group">
+          <span class="input-group-text bg-transparent text-light"><i class="bi bi-lock-fill"></i></span>
+          <input type="password" id="password" formControlName="password"
+                 class="form-control bg-transparent text-white border-light"
+                 placeholder="••••••••">
+        </div>
+      </div>
+
+      <button type="submit"
+              class="btn btn-primary btn-lg w-100 shadow animate__animated animate__pulse animate__infinite">
+        <i class="bi bi-box-arrow-in-right me-2"></i> Login
+      </button>
+    </form>
+  </div>
+</div>

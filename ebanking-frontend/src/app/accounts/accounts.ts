@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AccountsService } from '../services/accounts';
 import { AccountDetails } from '../model/account.model';
 import { catchError, Observable, throwError } from 'rxjs';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-accounts',
@@ -20,7 +21,7 @@ export class Accounts implements OnInit {
    currentPage: number = 0;
    pageSize: number = 5;
    accountObservable!: Observable<AccountDetails>;
-  constructor(private fb : FormBuilder, private accountsService: AccountsService) { }
+  constructor(private fb : FormBuilder, private accountsService: AccountsService ,public authService: AuthService) { }
 
 
 
