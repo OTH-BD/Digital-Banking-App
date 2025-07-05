@@ -56,6 +56,8 @@ ebanking/
 │
 └── README.md
 ```
+### 👇 Capture d'écran de la page de login
+
 ![Login Screenshot](./screenshots/v1.png)
 
 > 📸 *L'utilisateur peut se connecter avec un rôle `USER` ou `ADMIN`.*
